@@ -35,6 +35,8 @@
 // export default App
 import React from 'react'
 import {Routes, Route} from 'react-router-dom' 
+import { useAuthStore } from './store/useAuthStore'
+import { useEffect } from 'react'
 
 import Navbar from './components/Navbar'
 
@@ -45,6 +47,13 @@ import SettingsPage from './pages/SettingsPage'
 import ProfilePage from './pages/ProfilePage'
 
 const App = () => {
+  const {authUser, checkAuth} = useAuthStore();
+  useEffect(() => {
+    checkAuth();
+  }, [authUser])
+
+  console.log({authUser}); 
+
   return (
     <div>
       <Navbar></Navbar>
