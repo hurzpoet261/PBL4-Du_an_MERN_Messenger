@@ -1,5 +1,5 @@
 import express from 'express';
-import { login, logout, signup } from '../controllers/auth.controller.js';
+import { checkAuth, login, logout, signup } from '../controllers/auth.controller.js';
 import { protectRoute } from '../middleware/auth.middleware.js';
 import { updateProfile } from '../controllers/auth.controller.js';
 
@@ -12,5 +12,7 @@ route.post('/login',  login);
 route.post('/logout', logout);
 
 route.put('/update-profile', protectRoute, updateProfile);
+
+route.get('/check', protectRoute, checkAuth);
 
 export default route;
