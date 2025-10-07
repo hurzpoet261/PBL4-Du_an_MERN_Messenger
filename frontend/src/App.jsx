@@ -46,14 +46,20 @@ import LoginPage from './pages/LoginPage'
 import SettingsPage from './pages/SettingsPage'
 import ProfilePage from './pages/ProfilePage'
 
+import {Loader} from 'Lucide-react'
 const App = () => {
-  const {authUser, checkAuth} = useAuthStore();
+  const {authUser, checkAuth, IsCheckingAuth} = useAuthStore();
   useEffect(() => {
     checkAuth();
   }, [authUser])
 
   console.log({authUser}); 
 
+  if(IsCheckingAuth && !authUser) return (
+    <div className='flex item-center justify-center h-screen'>
+      <Loader className= " size-10  animate-spin" />
+    </div>
+)
   return (
     <div>
       <Navbar></Navbar>
