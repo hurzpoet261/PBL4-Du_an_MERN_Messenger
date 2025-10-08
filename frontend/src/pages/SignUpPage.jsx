@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MessageSquare, User } from "lucide-react"; 
+import { MessageSquare, User, Mail } from "lucide-react"; 
 import { useAuthStore } from "../store/useAuthStore";
 
 const SignUpPage = () => {
@@ -55,10 +55,29 @@ const SignUpPage = () => {
                 />
               </div>
             </div>
+              <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium">Email</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail className="size-5 text-base-content/40" />
+                </div>
+                <input
+                  type="email"
+                  className="input input-bordered w-full pl-10"
+                  placeholder="you@example.com"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              </div>
+            </div>
           </form>
-        </div> {/* ← thiếu div này gây lỗi */}
+        </div>
       </div>
-
+      
       {/* Right Side */}
       <div className="hidden lg:block bg-primary/5"></div>
     </div>
