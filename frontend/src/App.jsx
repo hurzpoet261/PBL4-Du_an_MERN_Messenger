@@ -37,6 +37,8 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom' 
 import { useAuthStore } from './store/useAuthStore'
 import { useEffect } from 'react'
+import { Toaster } from "react-hot-toast";
+
 
 import Navbar from './components/Navbar'
 
@@ -49,7 +51,7 @@ import ProfilePage from './pages/ProfilePage'
 import {Loader} from 'lucide-react'
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
-  const { theme } = useThemeStore();
+  // const { theme } = useThemeStore();
 
   console.log({ onlineUsers });
 
@@ -67,12 +69,12 @@ const App = () => {
     );
 
   return (
-    <div data-theme={theme}>
+    <div /*data-theme={theme}*/>
       <Navbar />
 
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='signup' element={<SignUpPage />} />
+        <Route path='/signup' element={<SignUpPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/settings' element={<SettingsPage />} />
         <Route path='/profile' element={<ProfilePage />} />
